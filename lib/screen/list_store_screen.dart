@@ -63,7 +63,7 @@ class _ListStoreScreenState extends State<ListStoreScreen> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => StoreDetailScreen(
-                    index: index,
+                    indexx: index,
                   ),
                 ),
               );
