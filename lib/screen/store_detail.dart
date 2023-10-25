@@ -14,7 +14,7 @@ class StoreDetailScreen extends StatefulWidget {
 class _StoreDetailScreenState extends State<StoreDetailScreen> {
   Future<DetailStoreModel> fetchDetail() async {
     int i = widget.indexx!;
-    i++;
+    i = i + 1;
     var response = await Dio()
         .get('https://singhneelesh.github.io/assignment/storeDetails/$i.json');
     var data = response.data;
@@ -35,7 +35,7 @@ class _StoreDetailScreenState extends State<StoreDetailScreen> {
             );
           } else if (snapshot.hasError) {
             return Center(
-              child: Text('Error: ${snapshot.error}'),
+              child: Text('Error: Something went wrong'),
             );
           } else {
             return Padding(
