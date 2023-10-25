@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:learning_bloc/cubit/list_store_cubit/list_store_cubit.dart';
 import 'package:learning_bloc/cubit/list_store_cubit/list_store_state.dart';
 import 'package:learning_bloc/model/list_store_model.dart';
+import 'package:learning_bloc/screen/store_detail.dart';
 
 class ListStoreScreen extends StatefulWidget {
   const ListStoreScreen({super.key});
@@ -54,11 +55,28 @@ class _ListStoreScreenState extends State<ListStoreScreen> {
     return ListView.builder(
       itemCount: posts.length,
       itemBuilder: (context, index) {
-        var post = posts[0];
+        var post = posts[index];
 
-        return ListTile(
-          title: Text(post.name.toString()),
-        );
+        return InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => StoreDetailScreen(
+                    index: index,
+                  ),
+                ),
+              );
+            },
+            child: Card(
+                child: ListTile(
+              title: Text(post.name!.toString(),
+                  style: const TextStyle(
+                      fontSize: 18, fontWeight: FontWeight.bold)),
+              subtitle: Text(
+                post.location!.toString(),
+              ),
+            )));
       },
     );
   }
